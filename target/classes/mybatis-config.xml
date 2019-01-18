@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.sesec.chamel.member.vo.Member" alias="Member" />
+		<typeAlias type="com.sesec.chamel.board.vo.Board" alias="Board" />
+		<typeAlias type="com.sesec.chamel.player.vo.Better" alias="Better" />
+		<typeAlias type="com.sesec.chamel.player.vo.Pitcher" alias="Pitcher" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mapper/memberMapper.xml" />
+		<mapper resource="mapper/boardMapper.xml" />
+		<mapper resource="mapper/playerMapper.xml" />
+	</mappers>
+</configuration>

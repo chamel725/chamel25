@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sesec.chamel.player.dao.PlayerMapper">
+	<!-- 타자 등록 -->
+	<insert id="insertBetter" parameterType="Better">
+		insert into better(
+		name
+		,age
+		,team
+		,year
+		,game
+		,avg
+		,hit
+		,hr
+		,rbi
+		,sb
+		)
+		values(
+		#{name}
+		,#{age}
+		,#{team}
+		,#{year}
+		,#{game}
+		,#{avg}
+		,#{hit}
+		,#{hr}
+		,#{rbi}
+		,#{sb}
+		)
+	</insert>
+
+	<!-- 투수 등록 -->
+	<insert id="insertPitcher" parameterType="Pitcher">
+		insert into better(
+		name
+		,age
+		,team
+		,year
+		,era
+		,win
+		,lose
+		,save
+		,hold
+		,so
+		)
+		values(
+		#{name}
+		,#{age}
+		,#{team}
+		,#{year}
+		,#{era}
+		,#{win}
+		,#{lose}
+		,#{save}
+		,#{hold}
+		,#{so}
+		)
+	</insert>
+
+	<select id="betterList" resultType="Better">
+		select * from better
+	</select>
+
+	<select id="pitcherList" resultType="Pitcher">
+		select * from pitcher
+	</select>
+	<select id="searchBetter" parameterType="String" resultType="Better">
+		SELECT * FROM better WHERE name = #{name}
+	</select>
+
+	<select id="searchPitcher" parameterType="String" resultType="Pitcher">
+		SELECT * FROM pitcher WHERE name = #{name}
+	</select>
+	<select id="searchBetterList" resultType="Better" parameterType="String">
+	 SELECT * FROM better WHERE team=#{team}
+	</select>
+	<select id="searchPitcherList" resultType="Pitcher" parameterType="String">
+	 SELECT * FROM pitcher WHERE team=#{team}
+	</select>
+	<select id="searchBetterList2" resultType="Better">
+	 SELECT * FROM better
+	</select>
+	<select id="searchPitcherList2" resultType="Pitcher">
+	 SELECT * FROM pitcher
+	</select>
+
+
+</mapper>

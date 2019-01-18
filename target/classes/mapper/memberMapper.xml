@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sesec.chamel.member.dao.MemberMapper">
+
+<insert id = "insertMember" parameterType="Member">
+insert into member2(
+	 memberid
+	 ,password
+	 ,name
+	 ,email
+)
+values(
+#{memberid}
+,#{password}
+,#{name}
+,#{email}
+)
+</insert>
+<!-- id중복체크 -->
+<select id="idCheck" parameterType="String" resultType="Member">
+select * from member2 where memberid=#{memberid}
+</select>
+<select id="getMember" parameterType="String" resultType="Member">
+select * from member2 where memberid=#{memberid}
+</select>
+<!-- update -->
+<update id="update" parameterType="Member">
+update
+	 member2
+set
+	 memberid = #{memberid}
+	 ,email = #{email}
+	 <if test="password != null and password != ''">
+	 ,password = #{password}
+	 </if>
+where
+	 memberid = #{memberid}
+</update>
+</mapper>

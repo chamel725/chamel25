@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+
+@import url(//fonts.googleapis.com/css?family=Vibur);
+html,body{
+  height:100%
+}
+
+@keyframes background-changer { 
+	0% { background-image: url(../image/lg1.jpg); }
+	10% { background-image: url(../image/lg2.png); }
+	20% { background-image: url(../image/lg3.jpg); } 
+	30% { background-image: url(../image/lg4.jpg); } 
+	40% { background-image: url(../image/lg5.jpg); }  
+	50% { background-image: url(../image/lg6.jpg); } 
+	60% { background-image: url(../image/lg7.jpg); } 
+	70% { background-image: url(../image/lg8.jpg); }
+	80% { background-image: url(../image/lg9.jpg); }
+	90% { background-image: url(../image/lg10.jpg); }
+	} 
+
+body {
+  background-position:center;
+  background-repeat:no-repeat;
+  background-image:url(../image/lg1.jpg);
+  background-size:cover;
+  animation: background-changer 40s;
+  margin:0
+}

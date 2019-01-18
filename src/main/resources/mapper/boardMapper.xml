@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sesec.chamel.board.dao.BoardMapper">
+ <!-- 글 저장 -->
+  <insert id="writeBoard" parameterType="Board">
+insert into memboard (
+	boardnum
+	,id
+	,title
+	,content
+	,team
+
+)
+values (
+	memboard_seq.nextval
+	,#{id}
+	, #{title}
+	, #{content}
+	, #{team}
+
+)
+</insert>
+ <select id="listBoard" parameterType="string" resultType="Board">
+select 
+	 *
+from
+  	memboard
+  	<if test="_parameter != null">
+  where
+  	title like '%' || #{searchText} || '%'
+  	</if>
+order by
+	 boardnum desc
+</select>
+
+<select id="readBoard" resultType="Board" parameterType ="String">
+select
+	*
+from 
+	memboard
+where
+	boardnum = #{boardnum}
+</select>
+
+
+
+<select id="getTotal" parameterType="string" resultType="int">
+select 
+	 count(*)
+from
+  	memboard
+  	<if test="_parameter != null">
+  where
+  	title like '%' || #{searchText} || '%'
+  	</if>
+</select>
+	<!-- 조회수 1 증가 -->
+	<update id="addHits" parameterType="String">
+		update
+			memboard
+		set
+			hits = hits + 1
+		where
+			boardnum = #{boardnum}
+	</update>
+	
+<delete id="deleteWrite" parameterType="Board">
+delete from memboard where boardnum = #{boardnum} and id = #{id}
+</delete>	
+
+<update id="updateBoard" parameterType="Board">
+update memboard set
+title = #{title}
+,content = #{content}
+where boardnum = #{boardnum} and id = #{id}
+</update>
+</mapper>
